@@ -1,4 +1,3 @@
-elctric-charge-simulator-cuda
-=============================
 
-cuda-elctric-charge-simulator
+elctric-charge-simulator-cuda
+ baaa64a194934aad956beac97f457ae572c3b921
