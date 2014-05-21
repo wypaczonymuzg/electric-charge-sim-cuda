@@ -343,7 +343,7 @@ int main(int argc, char **argv) {
 	scanf("%d", &n);
 	switch (n) {
 	case 1:
-		num_of_charges = 100;
+		num_of_charges = 1024;
 		sh_size = sizeof(float) * num_of_charges * 3;
 		printf("number of charges = %d \t sh_size = %d \n",num_of_charges,sh_size);
 		h_array = (float*) malloc(sh_size);
@@ -352,7 +352,7 @@ int main(int argc, char **argv) {
 			h_array[i] = RandomFloat(0, imageW);
 			h_array[i + 1] = RandomFloat(0, imageH);
 			h_array[i + 2] = rand() % 10000 + 10000;
-			printf("i : %d\t x : %f\t y : %f\t q : %f\n", i, h_array[i],
+			printf("i : %d\t x : %f\t y : %f\t q : %f\n", i/3, h_array[i],
 					h_array[i + 1], h_array[i + 2]);
 		}
 
