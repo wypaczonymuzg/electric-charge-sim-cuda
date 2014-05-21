@@ -5,6 +5,8 @@
 // CUDA utilities and system includes
 #include <cuda_runtime.h>
 #include <cuda_gl_interop.h>
+//#include <curand_kernel.h>
+
 
 // Includes
 #include <stdio.h>
@@ -341,7 +343,7 @@ int main(int argc, char **argv) {
 	scanf("%d", &n);
 	switch (n) {
 	case 1:
-		num_of_charges = 200;
+		num_of_charges = 100;
 		sh_size = sizeof(float) * num_of_charges * 3;
 		printf("number of charges = %d \t sh_size = %d \n",num_of_charges,sh_size);
 		h_array = (float*) malloc(sh_size);
