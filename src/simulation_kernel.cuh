@@ -8,14 +8,14 @@ __global__ void sim(TColor *dst, float* array, int imageW, int imageH,
 	float E, r1;
 	int temp;
 	extern __shared__ float points[];
-	if(blockDim.x<num_of_charges){
-		temp = num_of_charges/blockDim.x;
+	if (blockDim.x < num_of_charges) {
+		temp = num_of_charges / blockDim.x;
 	}
 	for (int i = 0; i < temp; i++) {
-		int index = threadIdx.x*temp+i;
-		points[index]=array[index];
-		points[index+1]=array[index+1];
-		points[index+2]=array[index+2];
+		int index = threadIdx.x * temp + i;
+		points[index] = array[index];
+		points[index + 1] = array[index + 1];
+		points[index + 2] = array[index + 2];
 	}
 	__syncthreads();
 	for (int i = 0; i < num_of_charges; i++) {
@@ -35,7 +35,7 @@ __global__ void sim(TColor *dst, float* array, int imageW, int imageH,
 		E = 0;
 	}
 	if (ix < imageW && iy < imageH) {
-		dst[imageW * iy + ix] = make_color(E, E, 0, 0);
+		dst[imageW * iy + ix] = make_color(0, E, E, 0);
 	}
 }
 
@@ -50,9 +50,15 @@ __global__ void sim_hardcoded(TColor *dst, int imageW, int imageH) {
 	points[3] = 684;
 	points[4] = 384;
 	points[5] = 10000;
+	points[6] = 513;
+	points[7] = 551;
+	points[8] = 10000;
+	points[9] = 513;
+	points[10] = 167;
+	points[11] = 10000;
 
 	float E, r1;
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < 4; i++) {
 		r1 = sqrt(
 				(points[i * 3] - ix) * (points[i * 3] - ix)
 						+ (points[i * 3 + 1] - iy) * (points[i * 3 + 1] - iy));
